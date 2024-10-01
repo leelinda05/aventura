@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura na Floresta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Aventura na Floresta</h1>
+    </header>
+    <main>
+        <section id="story">
+            <p>Você se encontra na entrada de uma floresta densa. Os sons da natureza o cercam, mas algo parece estranho.</p>
+            <p>O que você deseja fazer?</p>
+            <button onclick="choosePath('left')">Ir para a esquerda</button>
+            <button onclick="choosePath('right')">Ir para a direita</button>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+function choosePath(direction) {
+    const storySection = document.getElementById('story');
+    if (direction === 'left') {
+        storySection.innerHTML = `
+            <p>Você decidiu ir para a esquerda e encontrou uma caverna escura.</p>
+            <p>O que você deseja fazer?</p>
+            <button onclick="choosePath('exploreCave')">Explorar a caverna</button>
+            <button onclick="choosePath('backToStart')">Voltar para a entrada</button>
+        `;
+    } else if (direction === 'right') {
+        storySection.innerHTML = `
+            <p>Você decidiu ir para a direita e encontrou um lago bonito, mas misterioso.</p>
+            <p>O que você deseja fazer?</p>
+            <button onclick="choosePath('swim')">Nadar no lago</button>
+            <button onclick="choosePath('backToStart')">Voltar para a entrada</button>
+        `;
+    } else if (direction === 'exploreCave') {
+        storySection.innerHTML = `
+            <p>Dentro da caverna, você encontra um tesouro perdido!</p>
+            <p>Fim da aventura!</p>
+        `;
+    } else if (direction === 'swim') {
+        storySection.innerHTML = `
+            <p>Enquanto nada, você encontra um objeto mágico que concede desejos!</p>
+            <p>Fim da aventura!</p>
+        `;
+    } else if (direction === 'backToStart') {
+        storySection.innerHTML = `
+            <p>Você volta para a entrada da floresta.</p>
+            <p>O que você deseja fazer?</p>
+            <button onclick="choosePath('left')">Ir para a esquerda</button>
+            <button onclick="choosePath('right')">Ir para a direita</button>
+        `;
+    }
+}
+
